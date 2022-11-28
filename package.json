@@ -7,12 +7,12 @@
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "MIT",
   "keywords": [
-    "css",
     "classes",
     "classname",
     "classnames",
     "variants",
     "cnm",
+    "css",
     "tailwindcss",
     "tailwind variants",
     "class name manager"
