@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": [ "DOM", "DOM.Iterable", "ESNext", "ES2017" ],
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationDir": "./types",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "incremental": true
+  },
+  "types": [ "vitest/globals" ],
+  "exclude": [ "node_modules", "dist", "**/node_modules", "**/dist", "__test__.ts", "types/*" ]
+}

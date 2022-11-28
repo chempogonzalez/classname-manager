@@ -1,0 +1,51 @@
+{
+  "name": "classname-manager",
+  "type": "module",
+  "source": "src/index.ts",
+  "version": "0.9.0",
+  "description": "ClassName manager to easily handle component variants",
+  "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "classes",
+    "classname",
+    "classnames",
+    "variants",
+    "cnm",
+    "tailwindcss",
+    "tailwind variants",
+    "class name manager"
+  ],
+  "exports": {
+    ".": {
+      "browser": "./dist/classname-manager.esm.js",
+      "require": "./dist/classname-manager.cjs",
+      "import": "./dist/classname-manager.esm.js",
+      "umd": "./dist/classname-manager.umd.js",
+      "default": "./dist/classname-manager.modern.js"
+    },
+    "./types": {
+      "browser": "./types/index.d.ts",
+      "require": "./types/index.d.ts",
+      "import": "./types/index.d.ts",
+      "default": "./types/index.d.ts"
+    }
+  },
+  "main": "./dist/classname-manager.cjs",
+  "module": "./dist/classname-manager.esm.js",
+  "unpkg": "./dist/classname-manager.umd.js",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "build": "(rm -rf types & rm -rf dist) && microbundle",
+    "dev": "microbundle watch"
+  },
+  "devDependencies": {
+    "eslint-config-ts-standard-next": "^0.2.2",
+    "microbundle": "^0.15.1"
+  }
+}
