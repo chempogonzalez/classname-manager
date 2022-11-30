@@ -1,4 +1,7 @@
 {
   "extends": [ "ts-standard-next" ],
-  "ignorePatterns": [ "/types" ]
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "ignorePatterns": [ "/types", "!*.md" ]
 }
