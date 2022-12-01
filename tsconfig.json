@@ -18,7 +18,6 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "files": [ "README.md" ],
   "types": [ "vitest/globals" ],
   "include": [ "**/*.ts" ],
   "exclude": [ "node_modules", "dist", "**/node_modules", "**/dist", "__test__.ts", "types/*" ]
