@@ -31,6 +31,12 @@ pnpm add classname-manager
 ```tsx
 import { classNameManager } from 'classname-manager'
 
+interface ButtonProps {
+  type: 'primary' | 'secondary'
+  color: 'light' | 'dark'
+  disabled: boolean
+}
+
 /**
  * Define once the class schema
  * based on possible values from props
@@ -40,7 +46,7 @@ import { classNameManager } from 'classname-manager'
  *    Result: 'btn btn-primary text-black bg-white'
  * 
  */
-const getButtonClassName = classNameManager({
+const getButtonClassName = classNameManager<ButtonProps>({
   base: 'btn',
   dynamicVariants: {
     type: {
@@ -58,19 +64,11 @@ const getButtonClassName = classNameManager({
 })
 
 
-interface ButtonProps {
-  type: 'primary' | 'secondary'
-  color: 'light' | 'dark'
-  disabled: boolean
-}
-
-
 const Button = (props: ButtonProps) => {
-  const { label } = props
   const btnClassName = getButtonClassName(props)
 
   return (
-    <button className={btnClassName}>{label}</button>
+    <button className={btnClassName}>{props.label}</button>
   )
 }
 ```
@@ -119,15 +117,18 @@ const getClassName = cnm((props) => ({ /** Your schema */ }))
 
 ```
 
-### 🛠️ Schema
+<br>
 
-All schema values can be a string or an array of strings
+### 🛠️ SCHEMA object properties
+
+> All schema properties values can be either a string or an array of strings
 
 #### 🟣 `base` _(string | Array\<string\>)_
 Class to be placed at the beginning of the returned value
 
 ```ts
 const getClassName = cnm({ base: 'btn', /*...*/ })
+// Result: 'btn (other classes)'
 ```
 
 <br>
