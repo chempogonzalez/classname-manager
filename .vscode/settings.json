@@ -1,0 +1,20 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.enable": false,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "files.insertFinalNewline": true,
+  "cSpell.enableFiletypes": [
+    "typescriptreact"
+  ],
+  "cSpell.language": "en-GB,es",
+  "eslint.workingDirectories": [
+    ".",
+    "/packages/*",
+    "/apps/*"
+  ]
+}
