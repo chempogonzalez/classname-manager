@@ -32,7 +32,7 @@ pnpm add classname-manager
 import { classNameManager } from 'classname-manager'
 
 interface ButtonProps {
-  type: 'primary' | 'secondary'
+  styleType: 'primary' | 'secondary'
   color: 'light' | 'dark'
   disabled: boolean
 }
@@ -42,14 +42,14 @@ interface ButtonProps {
  * based on possible values from props
  * 
  * @example 
- *  - props: { type: 'primary', color: 'light' }
+ *  - props: { styleType: 'primary', color: 'light' }
  *    Result: 'btn btn-primary text-black bg-white'
  * 
  */
 const getButtonClassName = classNameManager<ButtonProps>({
   base: 'btn',
   dynamicVariants: {
-    type: {
+    styleType: {
       primary: 'btn-primary',
       secondary: 'btn-secondary',
     },
@@ -119,7 +119,7 @@ const getClassName = cnm((props) => ({ /** Your schema */ }))
 
 <br>
 
-### 🛠️ SCHEMA object properties
+### 🔖 SCHEMA object properties
 
 > All schema properties values can be either a string or an array of strings
 
@@ -135,14 +135,15 @@ const getClassName = cnm({ base: 'btn', /*...*/ })
 
 #### 🟣 `dynamicVariants` _(object)_
 Here is where you define your classes based on props passed in to the function. <br>_(For boolean values the expected properties are: true and false)_
+
 ```ts
 const getClassName = cnm({
   base: 'btn',
   dynamicVariants: {
-    type: {
+    styleType: {
       primary: 'btn-primary',
       secondary: 'btn-secondary',
-    }
+    },
     enabled: {
       true: 'bg-transparent',
       false: 'bg-gray',
@@ -150,8 +151,37 @@ const getClassName = cnm({
   }
 })
 
-getClassName({ type: 'secondary' })
+getClassName({ styleType: 'secondary' })
+// Result: 'btn btn-secondary'
 ```
+
+The example above doesn't return any value from the `enabled` property because it's not passed in the function call. You can handle this by adding a `DEFAULT` property to the schema object values
+##### - DEFAULT dynamicVariant value
+
+```diff
+const getClassName = cnm({
+  base: 'btn',
+  dynamicVariants: {
+    styleType: {
+      primary: 'btn-primary',
+      secondary: 'btn-secondary',
+    },
+    enabled: {
++     DEFAULT: false,
+      true: 'bg-transparent',
+      false: 'bg-gray',
+    }
+  }
+})
+
+getClassName({ styleType: 'secondary' })
++ // Result: 'btn btn-secondary bg-gray'
+```
+
+> **Note:** Although you can use the `DEFAULT` property, it is optional. <br>In most cases it's recommended to initialize props with a _`default value from js/ts`_ side to have a better control if you need to use it in other places
+
+
+
 <br>
 
 #### 🟣 `dynamicClassNames` _(object)_
@@ -163,7 +193,7 @@ const getClassName = cnm(({ status }) => {
   return {
     base: 'btn',
     dynamicVariants: {
-      type: {
+      styleType: {
         primary: 'btn-primary',
         secondary: 'btn-secondary',
       }
@@ -176,7 +206,34 @@ const getClassName = cnm(({ status }) => {
 // -----------------------------------
 
 getClassName({ status: 'triggered' })
+// Result: 'btn btn--disabled'
 ```
+
+
+### ⏬ Returned function
+When you define your schema, the function returns another function that you can use to get the class names based on the props passed in.
+
+#### 🟣 `extraClassNames` _property (string | Array\<string\>)_
+You can add extra classes to the end of the returned value by using the `extraClassNames` property
+
+```ts
+interface ButtonProps {
+  styleType: 'primary' | 'secondary'
+}
+
+const getClassName = cnm<ButtonProps>({
+  base: 'btn',
+  /* your schema */
+})
+
+/**
+ * It allows you to pass extra classes at
+ * the end of the returned value
+ */
+getClassName({ styleType: 'primary', extraClassNames: '' })
+// Result: 'btn btn--disabled'
+```
+
 
 <br>
 <br>

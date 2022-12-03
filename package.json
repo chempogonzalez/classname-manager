@@ -3,7 +3,7 @@
   "type": "module",
   "source": "src/index.ts",
   "version": "0.9.3",
-  "description": "ClassName manager to easily handle component variants",
+  "description": "🖌️ ClassName Manager to easily handle component variants",
   "author": "Chempo González <chempo.glez@gmail.com> (https://github.com/chempogonzalez/)",
   "license": "MIT",
   "keywords": [
