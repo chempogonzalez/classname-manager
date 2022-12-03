@@ -235,8 +235,8 @@ const getClassName = cnm<ButtonProps>({
  * It allows you to pass extra classes at
  * the end of the returned value
  */
-getClassName({ styleType: 'primary', extraClassNames: '' })
-// Result: 'btn btn--disabled'
+getClassName({ styleType: 'primary', extraClassNames: 'font-bold' })
+// Result: 'btn btn-primary font-bold'
 ```
 
 
