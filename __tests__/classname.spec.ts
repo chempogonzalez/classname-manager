@@ -85,6 +85,31 @@ describe('<< classNameManager >>', () => {
 			expect(className).toBe(result)
 		})
 
+		it('- is filled with array', () => {
+			const result = 'btn-base btn-primary btn-primary-2 btn-enabled btn-enabled-2'
+
+			const getClassName = classNameManager<ButtonProps>({
+				base: 'btn-base',
+				dynamicVariants: {
+					styleType: {
+						primary: [
+							'btn-primary',
+							'btn-primary-2',
+						],
+						secondary: 'btn-secondary',
+					},
+					isEnabled: {
+						DEFAULT: true,
+						true: ['btn-enabled', 'btn-enabled-2'],
+						false: '',
+					},
+				},
+			})
+
+			const className = getClassName({ styleType: 'primary', isEnabled: true })
+			expect(className).toBe(result)
+		})
+
 		it('- not valid values', () => {
 			const result = ''
 
@@ -102,6 +127,38 @@ describe('<< classNameManager >>', () => {
 			expect(className).toBe(result)
 			expect(className1).toBe(result)
 			expect(className2).toBe(result)
+		})
+	})
+
+
+	describe('-------------- [dynamicClassNames] -------------', () => {
+		it('- is filled', () => {
+			const result = 'btn-base dynamic-class'
+
+			const getClassName = classNameManager<ButtonProps>(props => ({
+				base: 'btn-base',
+				dynamicClassNames: {
+					'dynamic-class': props.styleType === 'primary',
+				},
+			}))
+
+			const className = getClassName({ styleType: 'primary' })
+			expect(className).toBe(result)
+		})
+	})
+	describe('-------------- [extraClassNames] ---------------', () => {
+		it('- is filled', () => {
+			const result = 'btn-base dynamic-class extra-class'
+
+			const getClassName = classNameManager<ButtonProps>(props => ({
+				base: 'btn-base',
+				dynamicClassNames: {
+					'dynamic-class': props.styleType === 'primary',
+				},
+			}))
+
+			const className = getClassName({ styleType: 'primary', extraClassNames: 'extra-class' })
+			expect(className).toBe(result)
 		})
 	})
 })
