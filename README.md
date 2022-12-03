@@ -118,10 +118,14 @@ const getClassName = cnm((props) => ({ /** Your schema */ }))
 ```
 
 <br>
+<br>
+
 
 ### 🔖 SCHEMA object properties
 
 > All schema properties values can be either a string or an array of strings
+
+<br>
 
 #### 🟣 `base` _(string | Array\<string\>)_
 Class to be placed at the beginning of the returned value
@@ -209,9 +213,10 @@ getClassName({ status: 'triggered' })
 // Result: 'btn btn--disabled'
 ```
 
+<br>
 
 ### ⏬ Returned function
-When you define your schema, the function returns another function that you can use to get the class names based on the props passed in.
+When you define your schema, it returns another function that you can use to get the class names based on the props passed in. You can pass an extra property:
 
 #### 🟣 `extraClassNames` _property (string | Array\<string\>)_
 You can add extra classes to the end of the returned value by using the `extraClassNames` property
