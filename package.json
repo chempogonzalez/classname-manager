@@ -26,10 +26,10 @@
       "default": "./dist/classname-manager.modern.js"
     },
     "./types": {
-      "browser": "./types/index.d.ts",
-      "require": "./types/index.d.ts",
-      "import": "./types/index.d.ts",
-      "default": "./types/index.d.ts"
+      "browser": "./types/src/index.d.ts",
+      "require": "./types/src/index.d.ts",
+      "import": "./types/src/index.d.ts",
+      "default": "./types/src/index.d.ts"
     }
   },
   "main": "./dist/classname-manager.cjs",
