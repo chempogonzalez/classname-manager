@@ -16,5 +16,9 @@
     ".",
     "/packages/*",
     "/apps/*"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    [ "cnm([^ç]*?(base\\:|dynamicVariants\\:)+[^ç]*?)\\}\\);?(\r\n|\r|\n)", "[\"'`]([^\"'`]*).*?[\"'`]" ],
+    [ "classNameManager([^ç]*?(base\\:|dynamicVariants\\:)+[^ç]*?)\\}\\);?(\r\n|\r|\n)", "[\"'`]([^\"'`]*).*?[\"'`]" ]
   ]
 }

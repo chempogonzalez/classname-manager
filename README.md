@@ -85,8 +85,8 @@ In order to allow the tailwindcss plugin intellisense to work properly with `cla
 // your project > .vscode (folder) > settings.json
 {
   "tailwindCSS.experimental.classRegex": [
-    [ "cnm\\(([^ç]*?)\\}\\)", "[\"'`]([^\"'`]*).*?[\"'`]" ],
-    [ "classNameManager\\(([^ç]*?)\\}\\)", "[\"'`]([^\"'`]*).*?[\"'`]" ]
+    [ "cnm([^ç]*?(base\\:|dynamicVariants\\:)+[^ç]*?)\\}\\);?(\r\n|\r|\n)", "[\"'`]([^\"'`]*).*?[\"'`]" ],
+    [ "classNameManager([^ç]*?(base\\:|dynamicVariants\\:)+[^ç]*?)\\}\\);?(\r\n|\r|\n)", "[\"'`]([^\"'`]*).*?[\"'`]" ]
   ]
 }
 ```
